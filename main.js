@@ -1,11 +1,11 @@
-Object.defineProperty(document, 'hasFocus', {
-  value: function () {
-    return true;
-  },
-  configurable: true 
+ Object.defineProperty(document, 'visibilityState', {
+    get() {
+        return 'visible';
+    }
 });
-function makeVisible() {
-  document.visibilityState = "visible";
-  document.removeEventListener("visibilitychange", makeVisible);
-}
-document.addEventListener("visibilitychange", makeVisible);
+document.addEventListener('visibilitychange', () => {}, false);
+Object.defineProperty(document, 'hasFocus', {
+    get() {
+        return () => true;
+    }
+});
